@@ -315,5 +315,6 @@
         private RadioButton radStud;
         private RadioButton radEmp;
         private Panel pnlLogin;
+        private Button button1;
     }
 }

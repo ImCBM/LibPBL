@@ -9,19 +9,14 @@ namespace LibPBL
 
 
 
-        string LogInFName;
-        string LogInLName;
-        string LogInUserID;
+
 
         public formLogin()
         {
             InitializeComponent();
 
 
-
         }
-
-
 
         private void formLogin_Load(object sender, EventArgs e)
         {
@@ -39,6 +34,12 @@ namespace LibPBL
             radStud.BackColor = Color.Transparent;
             radEmp.Parent = picbxLoginBG;
             radEmp.BackColor = Color.Transparent;
+
+            //
+            //string LogInID = "FirstN";
+            //string LogInPass = "LastN";
+            //OpenMainLibraryForm(LogInID, LogInPass);
+            //
         }
 
 
@@ -61,6 +62,19 @@ namespace LibPBL
 
 
 
+        // Open Main Library
+        private void OpenMainLibraryForm(string variable1, string variable2)
+        {
+
+
+            // Open the new form (MainLibrary) and pass necessary variables
+            MainLibrary mainLibraryForm = new MainLibrary(variable1, variable2);
+            mainLibraryForm.Show();
+            mainLibraryForm.TopLevel = true;
+
+            // Close the current form
+
+        }
 
 
 
@@ -71,9 +85,7 @@ namespace LibPBL
 
 
 
-
-
-
+        // CONTROLS
         private void btnToSign_Click(object sender, EventArgs e)
         {
             //this.Width = 960;
@@ -132,7 +144,12 @@ namespace LibPBL
                     // You can navigate to the next form or perform other actions here
 
 
+                    string LogInID = txtLogID.Text;
+                    string LogInPass = txtLogPass.Text;
 
+
+                    OpenMainLibraryForm(LogInID, LogInPass);
+                    this.Hide();
 
                 }
                 else
@@ -152,6 +169,14 @@ namespace LibPBL
                 {
                     MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     // You can navigate to the next form or perform other actions here
+
+                    string LogInID = txtLogID.Text;
+                    string LogInPass = txtLogPass.Text;
+
+
+                    OpenMainLibraryForm(LogInID, LogInPass);
+                    this.Hide();
+
                 }
                 else
                 {
@@ -174,7 +199,9 @@ namespace LibPBL
                 this.Width -= 20;
             }
             while (this.Width != 380);
-            
+
         }
+
+
     }
 }
