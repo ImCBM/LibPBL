@@ -7,20 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataFormats;
 
 namespace LibPBL
 {
     public partial class StudentSignUp : Form
     {
+  
         public StudentSignUp()
         {
             InitializeComponent();
+
+
         }
+
+
+
+
+
 
         private void StudentSignUp_Load(object sender, EventArgs e)
         {
 
         }
+
+        
 
         private void btnSignStudAccount_Click(object sender, EventArgs e)
         {
@@ -30,6 +41,7 @@ namespace LibPBL
             string sGradeLevel = cbxLevDept.Text;
             string sSection = txtSection.Text;
             string sPassword = txtSignPass.Text;
+
 
             StudentDatabase.SaveStudentData(sStudentID, sFname, sLname, sGradeLevel, sSection, sPassword);
         }

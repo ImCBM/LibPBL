@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            txtLevDept = new ComboBox();
+            cbxLevDept = new ComboBox();
             label1 = new Label();
             txtSignID = new TextBox();
             label2 = new Label();
@@ -41,16 +41,16 @@
             label3 = new Label();
             SuspendLayout();
             // 
-            // txtLevDept
+            // cbxLevDept
             // 
-            txtLevDept.DropDownStyle = ComboBoxStyle.DropDownList;
-            txtLevDept.Font = new Font("Arial", 15.75F, FontStyle.Bold);
-            txtLevDept.FormattingEnabled = true;
-            txtLevDept.Items.AddRange(new object[] { "Department of Data Science", "Department of Computer Science", "Department of Information Technology", "Department of Arts", "Department of Nursing", "Department of Communication", "Department of Accounting" });
-            txtLevDept.Location = new Point(69, 270);
-            txtLevDept.Name = "txtLevDept";
-            txtLevDept.Size = new Size(386, 32);
-            txtLevDept.TabIndex = 14;
+            cbxLevDept.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxLevDept.Font = new Font("Arial", 15.75F, FontStyle.Bold);
+            cbxLevDept.FormattingEnabled = true;
+            cbxLevDept.Items.AddRange(new object[] { "Department of Data Science", "Department of Computer Science", "Department of Information Technology", "Department of Arts", "Department of Nursing", "Department of Communication", "Department of Accounting" });
+            cbxLevDept.Location = new Point(69, 270);
+            cbxLevDept.Name = "cbxLevDept";
+            cbxLevDept.Size = new Size(386, 32);
+            cbxLevDept.TabIndex = 14;
             // 
             // label1
             // 
@@ -89,7 +89,7 @@
             btnSignEmpAccount.FlatStyle = FlatStyle.Flat;
             btnSignEmpAccount.Font = new Font("Arial Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSignEmpAccount.ForeColor = Color.FromArgb(255, 255, 192);
-            btnSignEmpAccount.Location = new Point(201, 505);
+            btnSignEmpAccount.Location = new Point(201, 398);
             btnSignEmpAccount.Name = "btnSignEmpAccount";
             btnSignEmpAccount.Size = new Size(117, 40);
             btnSignEmpAccount.TabIndex = 15;
@@ -167,7 +167,7 @@
             Controls.Add(txtSignFname);
             Controls.Add(label5);
             Controls.Add(btnSignEmpAccount);
-            Controls.Add(txtLevDept);
+            Controls.Add(cbxLevDept);
             Controls.Add(label1);
             Controls.Add(txtSignID);
             Controls.Add(label2);
@@ -178,7 +178,7 @@
         }
 
         #endregion
-        private ComboBox txtLevDept;
+        private ComboBox cbxLevDept;
         private Label label1;
         private TextBox txtSignID;
         private Label label2;
