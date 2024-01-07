@@ -1,19 +1,31 @@
 using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
 using System.Windows.Controls;
 
 namespace LibPBL
 {
     public partial class formLogin : Form
     {
+
+
+
+        string LogInFName;
+        string LogInLName;
+        string LogInUserID;
+
         public formLogin()
         {
             InitializeComponent();
-            this.Width = 380;
+
 
 
         }
+
+
+
         private void formLogin_Load(object sender, EventArgs e)
         {
+            this.Width = 380;
             lblLoginID.Parent = picbxLoginBG;
             lblLoginID.BackColor = Color.Transparent;
 
@@ -45,15 +57,34 @@ namespace LibPBL
             signform.Show();
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         private void btnToSign_Click(object sender, EventArgs e)
         {
             //this.Width = 960;
-
+            this.MaximumSize = new Size(960, 720);
+            this.MinimumSize = new Size(960, 720);
             do
             {
                 this.Width += 20;
             }
             while (this.Width != 960);
+
             OpenChildSignForm(new SignUpComponent());
         }
 
@@ -67,6 +98,13 @@ namespace LibPBL
             btnLogin.FlatAppearance.BorderSize = 0;
         }
 
+
+
+
+
+
+
+        //LOG IN
         private void radStud_CheckedChanged(object sender, EventArgs e)
         {
             radEmp.ForeColor = Color.Gainsboro;
@@ -77,6 +115,66 @@ namespace LibPBL
         {
             radStud.ForeColor = Color.Gainsboro;
             radEmp.ForeColor = Color.Silver;
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if (radStud.Checked == true)
+            {
+                // Get the entered studentID and password
+                string enteredID = txtLogID.Text;
+                string enteredPassword = txtLogPass.Text;
+
+                // Check credentials using LoginComponents
+                if (StudEmpLoginComponent.CheckStudCredentials(enteredID, enteredPassword))
+                {
+                    MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // You can navigate to the next form or perform other actions here
+
+
+
+
+                }
+                else
+                {
+                    MessageBox.Show($"Invalid credentials. Please check entered Student ID or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            else if (radEmp.Checked == true)
+            {
+                // Get the entered studentID and password
+                string enteredID = txtLogID.Text;
+                string enteredPassword = txtLogPass.Text;
+
+                // Check credentials using LoginComponents
+                if (StudEmpLoginComponent.CheckEmpCredentials(enteredID, enteredPassword))
+                {
+                    MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // You can navigate to the next form or perform other actions here
+                }
+                else
+                {
+                    MessageBox.Show($"Invalid credentials. Please check entered Employee ID or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show($"Invalid credentials", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnRemoveSign_Click(object sender, EventArgs e)
+        {
+            //this.Width = 380;
+            this.MaximumSize = new Size(380, 720);
+            this.MinimumSize = new Size(380, 720);
+            do
+            {
+                this.Width -= 20;
+            }
+            while (this.Width != 380);
+            
         }
     }
 }
