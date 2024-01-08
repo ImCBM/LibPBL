@@ -44,10 +44,6 @@ namespace LibPBL
                 return;
             }
 
-
-
-
-
             // Format the data as a CSV line
             string csvLine = $"{studentID},{firstName},{lastName},{gradeLevel},{section},{password}";
 
@@ -62,12 +58,6 @@ namespace LibPBL
                 MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
-
-
-
         public static bool IsDuplicateStudentID(string studentID)
         {
             // Read existing StudentIDs from the file
@@ -78,6 +68,36 @@ namespace LibPBL
 
             // Check if the given studentID already exists in the file
             return existingStudentIDs.Contains(studentID);
+        }
+
+
+        //LOGGED IN COMPONENTS
+        public static string GetFullNameByStudentID(string studentID)
+        {
+            try
+            {
+                // Read all lines from the file
+                string[] lines = File.ReadAllLines(DatabasePath);
+
+                // Skip the header line and find the student with the specified StudentID
+                string[] studentData = lines.Skip(1).Where(line => line.StartsWith(studentID)).Select(line => line.Split(',')).FirstOrDefault();
+
+                // If the student with the specified ID is found, concatenate FirstName and LastName
+                if (studentData != null && studentData.Length >= 3)
+                {
+                    return $"{studentData[1]}, {studentData[2]}";
+                }
+                else
+                {
+                    //MessageBox.Show("Student not found in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return string.Empty;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error reading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return string.Empty;
+            }
         }
     }
 }
