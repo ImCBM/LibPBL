@@ -3,57 +3,57 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SQLite;
 
 namespace LibPBL
 {
     internal class TeacherDatabase
     {
-        // Get the current application's base directory (where the .cs files are located)
-        private static readonly string DatabaseFolderPath = AppDomain.CurrentDomain.BaseDirectory;
+        //private static readonly string DatabaseFolderPath = AppDomain.CurrentDomain.BaseDirectory;
+        //public static readonly string DatabasePath = Path.Combine(DatabaseFolderPath, "PBL.db");
+        public static readonly string DatabasePath = "Data Source=PBL.db;Version=3;";
 
-        // Combine the base directory with the file name to get the full path to the CSV file
-        public static readonly string DatabasePath = Path.Combine(DatabaseFolderPath, "employeedb.csv");
-
-        public static void SaveTeacherData(string EmpID, string firstName, string lastName, string Dept, string password)
+        public static void SaveTeacherData(string empID, string firstName, string lastName, string dept, string password)
         {
-
-
-
-            // Check if the file exists, and create it if not
-            if (!File.Exists(DatabasePath))
-            {
-                try
-                {
-                    // Create the file with a header line
-                    File.WriteAllText(DatabasePath, "EmployeeID,FirstName,LastName,Department,Password" + Environment.NewLine);
-                    MessageBox.Show("File made", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error creating file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-
-            // Check for duplicate StudentID
-            if (IsDuplicateEmpID(EmpID))
-            {
-                MessageBox.Show("Duplicate Employee ID found. Please use a different StudentID. " + EmpID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-
-
-
-
-            // Format the data as a CSV line
-            string csvLine = $"{EmpID},{firstName},{lastName},{Dept},{password}";
-
-            // Save the CSV line to the file
             try
             {
-                File.AppendAllText(DatabasePath, csvLine + Environment.NewLine);
-                MessageBox.Show("Data saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                using (SQLiteConnection connection = new SQLiteConnection(DatabasePath))
+                {
+                    connection.Open();
+
+                    using (SQLiteCommand createTableCommand = new SQLiteCommand(
+                        "CREATE TABLE IF NOT EXISTS Teachers (" +
+                        "EmpID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "EmployeeID TEXT, " +
+                        "FirstName TEXT, " +
+                        "LastName TEXT, " +
+                        "Department TEXT, " +
+                        "Password TEXT);", connection))
+                    {
+                        createTableCommand.ExecuteNonQuery();
+                    }
+
+                    if (IsDuplicateEmpID(empID, connection))
+                    {
+                        MessageBox.Show("Duplicate Employee ID found. Please use a different Employee ID. " + empID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    using (SQLiteCommand insertCommand = new SQLiteCommand(
+                        "INSERT INTO Teachers (EmployeeID, FirstName, LastName, Department, Password) " +
+                        "VALUES (@EmployeeID, @FirstName, @LastName, @Department, @Password);", connection))
+                    {
+                        insertCommand.Parameters.AddWithValue("@EmployeeID", empID);
+                        insertCommand.Parameters.AddWithValue("@FirstName", firstName);
+                        insertCommand.Parameters.AddWithValue("@LastName", lastName);
+                        insertCommand.Parameters.AddWithValue("@Department", dept);
+                        insertCommand.Parameters.AddWithValue("@Password", password);
+
+                        insertCommand.ExecuteNonQuery();
+
+                        MessageBox.Show("Data saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -61,21 +61,55 @@ namespace LibPBL
             }
         }
 
-
-
-
-
-
-        public static bool IsDuplicateEmpID(string studentID)
+        public static bool IsDuplicateEmpID(string empID, SQLiteConnection connection)
         {
-            // Read existing StudentIDs from the file
-            string[] existingEmpIDs = File.ReadAllLines(DatabasePath)
-                .Skip(1) // Skip the header line
-                .Select(line => line.Split(',')[0]) // Extract StudentID from each line
-                .ToArray();
+            try
+            {
+                using (SQLiteCommand command = new SQLiteCommand("SELECT EmployeeID FROM Teachers WHERE EmployeeID = @EmployeeID;", connection))
+                {
+                    command.Parameters.AddWithValue("@EmployeeID", empID);
 
-            // Check if the given studentID already exists in the file
-            return existingEmpIDs.Contains(studentID);
+                    object result = command.ExecuteScalar();
+                    return result != null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error checking duplicate Employee ID: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public static string GetFullNameByEmpID(string empID)
+        {
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(DatabasePath))
+                {
+                    connection.Open();
+
+                    using (SQLiteCommand command = new SQLiteCommand("SELECT FirstName, LastName FROM Teachers WHERE EmployeeID = @EmployeeID;", connection))
+                    {
+                        command.Parameters.AddWithValue("@EmployeeID", empID);
+
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string firstName = reader["FirstName"].ToString();
+                                string lastName = reader["LastName"].ToString();
+                                return $"{firstName} {lastName}";
+                            }
+                        }
+                    }
+                }
+                return string.Empty;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error retrieving full name: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return string.Empty;
+            }
         }
     }
 }

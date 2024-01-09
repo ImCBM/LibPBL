@@ -63,22 +63,18 @@ namespace LibPBL
 
 
         // Open Main Library
-        private void OpenMainLibraryForm(string variable1, string variable2)
+        private void OpenMainLibraryForm(string passingID, string passingPass, bool passingLogInType)
         {
 
 
             // Open the new form (MainLibrary) and pass necessary variables
-            MainLibrary mainLibraryForm = new MainLibrary(variable1, variable2);
+            MainLibrary mainLibraryForm = new MainLibrary(passingID, passingPass, passingLogInType);
             mainLibraryForm.Show();
             mainLibraryForm.TopLevel = true;
 
             // Close the current form
 
         }
-
-
-
-
 
 
 
@@ -146,9 +142,9 @@ namespace LibPBL
 
                     string LogInID = txtLogID.Text;
                     string LogInPass = txtLogPass.Text;
+                    bool isLogInStud = true;
 
-
-                    OpenMainLibraryForm(LogInID, LogInPass);
+                    OpenMainLibraryForm(LogInID, LogInPass, isLogInStud);
                     this.Hide();
 
                 }
@@ -172,9 +168,10 @@ namespace LibPBL
 
                     string LogInID = txtLogID.Text;
                     string LogInPass = txtLogPass.Text;
+                    bool isLogInStud = false;
 
 
-                    OpenMainLibraryForm(LogInID, LogInPass);
+                    OpenMainLibraryForm(LogInID, LogInPass, isLogInStud);
                     this.Hide();
 
                 }

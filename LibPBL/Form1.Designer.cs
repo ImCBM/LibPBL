@@ -165,10 +165,11 @@
             // txtLogID
             // 
             txtLogID.BackColor = SystemColors.InactiveCaption;
+            txtLogID.BorderStyle = BorderStyle.None;
             txtLogID.Font = new Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtLogID.Location = new Point(27, 227);
             txtLogID.Name = "txtLogID";
-            txtLogID.Size = new Size(299, 32);
+            txtLogID.Size = new Size(299, 25);
             txtLogID.TabIndex = 25;
             // 
             // lblLoginPass

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,69 +11,90 @@ namespace LibPBL
     {
         public static bool CheckStudCredentials(string studentID, string password)
         {
-
-            // Read existing credentials from the file
-            string[] lines = File.ReadAllLines(StudentDatabase.DatabasePath);
-            foreach (string line in lines.Skip(1)) // Skip the header line
+            try
             {
-                string[] parts = line.Split(',');
-                string existingStudentID = parts[0].Trim(); // Assuming studentID is at index 0
-                string existingPassword = parts[5].Trim();   // Assuming password is at index 4
-
-                // Check for a matching studentID
-                if (string.Equals(existingStudentID, studentID, StringComparison.OrdinalIgnoreCase))
+                using (SQLiteConnection connection = new SQLiteConnection(StudentDatabase.DatabasePath))
                 {
-                    // Check if the corresponding password is correct
-                    if (existingPassword == password)
+                    connection.Open();
+
+                    using (SQLiteCommand command = new SQLiteCommand("SELECT StudentID, Password FROM Students WHERE StudentID = @StudentID;", connection))
                     {
-                        return true; // Credentials are valid
-                    }
-                    else
-                    {
-                        // For testing purposes, display the correct password in the error message
-                        //MessageBox.Show($"Invalid credentials. Incorrect ID or Password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
+                        command.Parameters.AddWithValue("@StudentID", studentID);
+
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string existingPassword = reader["Password"].ToString().Trim();
+
+                                // Check if the corresponding password is correct
+                                if (existingPassword == password)
+                                {
+                                    return true; // Credentials are valid
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Invalid credentials. Incorrect ID or Password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return false;
+                                }
+                            }
+                        }
                     }
                 }
-            }
 
-            // No matching studentID found
-            MessageBox.Show($"Invalid credentials. No student found with StudentID '{studentID}'. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return false;
+                // No matching studentID found
+                //MessageBox.Show($"Invalid credentials. No student found with StudentID '{studentID}'. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error checking credentials: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
 
-
-        public static bool CheckEmpCredentials(string studentID, string password)
+        public static bool CheckEmpCredentials(string employeeID, string password)
         {
-
-            // Read existing credentials from the file
-            string[] lines = File.ReadAllLines(TeacherDatabase.DatabasePath);
-            foreach (string line in lines.Skip(1)) // Skip the header line
+            try
             {
-                string[] parts = line.Split(',');
-                string existingStudentID = parts[0].Trim(); // Assuming studentID is at index 0
-                string existingPassword = parts[4].Trim();   // Assuming password is at index 4
-
-                // Check for a matching studentID
-                if (string.Equals(existingStudentID, studentID, StringComparison.OrdinalIgnoreCase))
+                using (SQLiteConnection connection = new SQLiteConnection(TeacherDatabase.DatabasePath))
                 {
-                    // Check if the corresponding password is correct
-                    if (existingPassword == password)
+                    connection.Open();
+
+                    using (SQLiteCommand command = new SQLiteCommand("SELECT EmployeeID, Password FROM Teachers WHERE EmployeeID = @EmployeeID;", connection))
                     {
-                        return true; // Credentials are valid
-                    }
-                    else
-                    {
-                        // For testing purposes, display the correct password in the error message
-                       // MessageBox.Show($"Invalid credentials. The correct password for StudentID '{studentID}' is '{existingPassword}'. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
+                        command.Parameters.AddWithValue("@EmployeeID", employeeID);
+
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string existingPassword = reader["Password"].ToString().Trim();
+
+                                // Check if the corresponding password is correct
+                                if (existingPassword == password)
+                                {
+                                    return true; // Credentials are valid
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Invalid credentials. Incorrect ID or Password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return false;
+                                }
+                            }
+                        }
                     }
                 }
-            }
 
-            // No matching studentID found
-            // MessageBox.Show($"Invalid credentials. No Employee found with Employee ID: '{studentID}'. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return false;
+                // No matching employeeID found
+                //MessageBox.Show($"Invalid credentials. No employee found with EmployeeID '{employeeID}'. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error checking credentials: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
     }
 }
