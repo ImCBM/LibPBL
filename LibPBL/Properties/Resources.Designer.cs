@@ -63,6 +63,26 @@ namespace LibPBL.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _4d31d052cb1b8083385707b374134e7a11b9c755_00 {
+            get {
+                object obj = ResourceManager.GetObject("4d31d052cb1b8083385707b374134e7a11b9c755_00", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Based_on_yur_special_someone_s_zodiac_sign {
+            get {
+                object obj = ResourceManager.GetObject("Based on yur special someone\'s zodiac sign", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LibLogo {
             get {
                 object obj = ResourceManager.GetObject("LibLogo", resourceCulture);
@@ -76,6 +96,16 @@ namespace LibPBL.Properties {
         internal static System.Drawing.Bitmap NatLib1 {
             get {
                 object obj = ResourceManager.GetObject("NatLib1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UserDefPic {
+            get {
+                object obj = ResourceManager.GetObject("UserDefPic", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

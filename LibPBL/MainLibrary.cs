@@ -30,8 +30,21 @@ namespace LibPBL
 
         private void MainLibrary_Load(object sender, EventArgs e)
         {
-            string fullName = StudentDatabase.GetFullNameByStudentID(studentIDToRetrieve);
-            lblUsername.Text = fullName;
+            //Gets the name from DB
+            string fullName;
+            if (isLogInTypeStud == true)
+            {
+                fullName = StudentDatabase.GetFullNameByStudentID(studentIDToRetrieve);
+                lblUsername.Text = fullName;
+            }
+           else if (isLogInTypeStud == false)
+            {
+                fullName = TeacherDatabase.GetFullNameByEmpID(studentIDToRetrieve);
+                lblUsername.Text = fullName;
+            }
+            
+
+
         }
 
 
