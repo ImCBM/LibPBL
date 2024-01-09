@@ -42,7 +42,6 @@
             txtSearchBar.Name = "txtSearchBar";
             txtSearchBar.Size = new Size(346, 34);
             txtSearchBar.TabIndex = 1;
-            txtSearchBar.TextChanged += textBox1_TextChanged;
             // 
             // btnSearch
             // 
@@ -57,7 +56,7 @@
             btnSearch.Size = new Size(59, 44);
             btnSearch.TabIndex = 2;
             btnSearch.UseVisualStyleBackColor = true;
-            btnSearch.Click += iconButton1_Click;
+            btnSearch.Click += btnSearch_Click;
             // 
             // flowLayoutPanel1
             // 

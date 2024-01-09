@@ -21,6 +21,9 @@ namespace LibPBL
         private void formLogin_Load(object sender, EventArgs e)
         {
             this.Width = 380;
+            picLogoPP.Parent = picbxLoginBG;
+            picLogoPP.BackColor = Color.Transparent;
+
             lblLoginID.Parent = picbxLoginBG;
             lblLoginID.BackColor = Color.Transparent;
 

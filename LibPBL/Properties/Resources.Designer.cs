@@ -103,6 +103,16 @@ namespace LibPBL.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap PAGEPAL {
+            get {
+                object obj = ResourceManager.GetObject("PAGEPAL", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap UserDefPic {
             get {
                 object obj = ResourceManager.GetObject("UserDefPic", resourceCulture);
