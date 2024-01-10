@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formLogin));
             pnlSignUp = new Panel();
             btnRemoveSign = new FontAwesome.Sharp.IconButton();
             panel2 = new Panel();
@@ -46,9 +47,11 @@
             radStud = new RadioButton();
             radEmp = new RadioButton();
             pnlLogin = new Panel();
+            picLogoPP = new PictureBox();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picbxLoginBG).BeginInit();
             pnlLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picLogoPP).BeginInit();
             SuspendLayout();
             // 
             // pnlSignUp
@@ -165,10 +168,11 @@
             // txtLogID
             // 
             txtLogID.BackColor = SystemColors.InactiveCaption;
+            txtLogID.BorderStyle = BorderStyle.None;
             txtLogID.Font = new Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtLogID.Location = new Point(27, 227);
             txtLogID.Name = "txtLogID";
-            txtLogID.Size = new Size(299, 32);
+            txtLogID.Size = new Size(299, 25);
             txtLogID.TabIndex = 25;
             // 
             // lblLoginPass
@@ -255,6 +259,8 @@
             // pnlLogin
             // 
             pnlLogin.BackColor = Color.FromArgb(216, 235, 254);
+            pnlLogin.Controls.Add(pnlTopLog);
+            pnlLogin.Controls.Add(picLogoPP);
             pnlLogin.Controls.Add(btnRemoveSign);
             pnlLogin.Controls.Add(radEmp);
             pnlLogin.Controls.Add(radStud);
@@ -265,7 +271,6 @@
             pnlLogin.Controls.Add(txtLogID);
             pnlLogin.Controls.Add(lblLoginID);
             pnlLogin.Controls.Add(panel3);
-            pnlLogin.Controls.Add(pnlTopLog);
             pnlLogin.Controls.Add(picbxLoginBG);
             pnlLogin.Controls.Add(panel1);
             pnlLogin.Dock = DockStyle.Fill;
@@ -273,6 +278,16 @@
             pnlLogin.Name = "pnlLogin";
             pnlLogin.Size = new Size(944, 681);
             pnlLogin.TabIndex = 0;
+            // 
+            // picLogoPP
+            // 
+            picLogoPP.Image = Properties.Resources.PAGEPAL;
+            picLogoPP.Location = new Point(80, -4);
+            picLogoPP.Name = "picLogoPP";
+            picLogoPP.Size = new Size(227, 122);
+            picLogoPP.SizeMode = PictureBoxSizeMode.Zoom;
+            picLogoPP.TabIndex = 32;
+            picLogoPP.TabStop = false;
             // 
             // formLogin
             // 
@@ -284,6 +299,7 @@
             Controls.Add(pnlSignUp);
             Controls.Add(pnlLogin);
             ForeColor = Color.Coral;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximumSize = new Size(960, 720);
             Name = "formLogin";
             Text = "Login";
@@ -293,6 +309,7 @@
             ((System.ComponentModel.ISupportInitialize)picbxLoginBG).EndInit();
             pnlLogin.ResumeLayout(false);
             pnlLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picLogoPP).EndInit();
             ResumeLayout(false);
         }
 
@@ -316,5 +333,6 @@
         private RadioButton radEmp;
         private Panel pnlLogin;
         private Button button1;
+        private PictureBox picLogoPP;
     }
 }

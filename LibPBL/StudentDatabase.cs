@@ -5,69 +5,69 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using System.Data.SQLite;
 
 namespace LibPBL
 {
     internal class StudentDatabase
     {
         // Get the current application's base directory (where the .cs files are located)
-        private static readonly string DatabaseFolderPath = AppDomain.CurrentDomain.BaseDirectory;
+        public static readonly string DatabasePath = "Data Source=PBL.db;Version=3;";
 
         // Combine the base directory with the file name to get the full path to the CSV file
-        public static readonly string DatabasePath = Path.Combine(DatabaseFolderPath, "studentsdb.csv");
-
         public static void SaveStudentData(string studentID, string firstName, string lastName, string gradeLevel, string section, string password)
         {
-
-
-
-            // Check if the file exists, and create it if not
-            if (!File.Exists(DatabasePath))
-            {
-                try
-                {
-                    // Create the file with a header line
-                    File.WriteAllText(DatabasePath, "StudentID,FirstName,LastName,GradeLevel,Section,Password" + Environment.NewLine);
-                    MessageBox.Show("File made", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error creating file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-
-            // Check for duplicate StudentID
-            if (IsDuplicateStudentID(studentID))
-            {
-                MessageBox.Show("Duplicate StudentID found. Please use a different StudentID. " + studentID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Format the data as a CSV line
-            string csvLine = $"{studentID},{firstName},{lastName},{gradeLevel},{section},{password}";
-
-            // Save the CSV line to the file
             try
             {
-                File.AppendAllText(DatabasePath, csvLine + Environment.NewLine);
-                MessageBox.Show("Data saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                using (SQLiteConnection connection = new SQLiteConnection(DatabasePath))
+                {
+                    connection.Open();
+
+                    // Create the Students table if it doesn't exist
+                    using (SQLiteCommand createTableCommand = new SQLiteCommand("CREATE TABLE IF NOT EXISTS Students (StudentID TEXT PRIMARY KEY, FirstName TEXT, LastName TEXT, GradeLevel TEXT, Section TEXT, Password TEXT);", connection))
+                    {
+                        createTableCommand.ExecuteNonQuery();
+                    }
+
+                    // Check for duplicate StudentID
+                    if (IsDuplicateStudentID(studentID, connection))
+                    {
+                        MessageBox.Show("Duplicate StudentID found. Please use a different StudentID. " + studentID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Insert data into the Students table
+                    using (SQLiteCommand insertCommand = new SQLiteCommand("INSERT INTO Students (StudentID, FirstName, LastName, GradeLevel, Section, Password) VALUES (@StudentID, @FirstName, @LastName, @GradeLevel, @Section, @Password);", connection))
+                    {
+                        insertCommand.Parameters.AddWithValue("@StudentID", studentID);
+                        insertCommand.Parameters.AddWithValue("@FirstName", firstName);
+                        insertCommand.Parameters.AddWithValue("@LastName", lastName);
+                        insertCommand.Parameters.AddWithValue("@GradeLevel", gradeLevel);
+                        insertCommand.Parameters.AddWithValue("@Section", section);
+                        insertCommand.Parameters.AddWithValue("@Password", password);
+
+                        insertCommand.ExecuteNonQuery();
+
+                        MessageBox.Show("Data saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error saving data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public static bool IsDuplicateStudentID(string studentID)
+        public static bool IsDuplicateStudentID(string studentID, SQLiteConnection connection)
         {
-            // Read existing StudentIDs from the file
-            string[] existingStudentIDs = File.ReadAllLines(DatabasePath)
-                .Skip(1) // Skip the header line
-                .Select(line => line.Split(',')[0]) // Extract StudentID from each line
-                .ToArray();
+            using (SQLiteCommand command = new SQLiteCommand("SELECT StudentID FROM Students WHERE StudentID = @StudentID;", connection))
+            {
+                command.Parameters.AddWithValue("@StudentID", studentID);
 
-            // Check if the given studentID already exists in the file
-            return existingStudentIDs.Contains(studentID);
+                using (SQLiteDataReader reader = command.ExecuteReader())
+                {
+                    return reader.Read();
+                }
+            }
         }
 
 
@@ -76,22 +76,27 @@ namespace LibPBL
         {
             try
             {
-                // Read all lines from the file
-                string[] lines = File.ReadAllLines(DatabasePath);
-
-                // Skip the header line and find the student with the specified StudentID
-                string[] studentData = lines.Skip(1).Where(line => line.StartsWith(studentID)).Select(line => line.Split(',')).FirstOrDefault();
-
-                // If the student with the specified ID is found, concatenate FirstName and LastName
-                if (studentData != null && studentData.Length >= 3)
+                using (SQLiteConnection connection = new SQLiteConnection(DatabasePath))
                 {
-                    return $"{studentData[1]}, {studentData[2]}";
+                    connection.Open();
+
+                    using (SQLiteCommand command = new SQLiteCommand("SELECT FirstName, LastName FROM Students WHERE StudentID = @StudentID;", connection))
+                    {
+                        command.Parameters.AddWithValue("@StudentID", studentID);
+
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                return $"{reader["FirstName"].ToString()}, {reader["LastName"].ToString()}";
+                            }
+                        }
+                    }
                 }
-                else
-                {
-                    //MessageBox.Show("Student not found in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return string.Empty;
-                }
+
+                // If the student with the specified ID is not found
+                MessageBox.Show("Student not found in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return string.Empty;
             }
             catch (Exception ex)
             {

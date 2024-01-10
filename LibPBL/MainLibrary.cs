@@ -7,27 +7,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SQLite;
 
 namespace LibPBL
 {
     public partial class MainLibrary : Form
     {
         private string LogInID;
-        private string variable2;
+        private string LogInPass;
         string studentIDToRetrieve;
+        bool isLogInTypeStud;
 
-        public MainLibrary(string var1, string var2)
+        public MainLibrary(string passedID, string passedPass, bool isStudent)
         {
             InitializeComponent();
-            LogInID = var1;
-            studentIDToRetrieve = var1;
-            variable2 = var2;
+            LogInID = passedID;
+            studentIDToRetrieve = passedID;
+            LogInPass = passedPass;
+            isLogInTypeStud = isStudent;
+
         }
 
         private void MainLibrary_Load(object sender, EventArgs e)
         {
-            string fullName = StudentDatabase.GetFullNameByStudentID(studentIDToRetrieve);
-            lblUsername.Text = fullName;
+            //Gets the name from DB
+            string fullName;
+            if (isLogInTypeStud == true)
+            {
+                fullName = StudentDatabase.GetFullNameByStudentID(studentIDToRetrieve);
+                lblUsername.Text = fullName;
+            }
+           else if (isLogInTypeStud == false)
+            {
+                fullName = TeacherDatabase.GetFullNameByEmpID(studentIDToRetrieve);
+                lblUsername.Text = fullName;
+            }
+            
+
+
         }
 
 
