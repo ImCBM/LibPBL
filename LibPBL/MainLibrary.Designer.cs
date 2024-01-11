@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             pnlLeft = new Panel();
+            panel2 = new Panel();
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
             lblUsername = new Label();
@@ -46,6 +47,7 @@
             // pnlLeft
             // 
             pnlLeft.BackColor = Color.FromArgb(234, 249, 245);
+            pnlLeft.Controls.Add(panel2);
             pnlLeft.Controls.Add(pictureBox1);
             pnlLeft.Controls.Add(panel1);
             pnlLeft.Controls.Add(lblUsername);
@@ -55,6 +57,14 @@
             pnlLeft.Name = "pnlLeft";
             pnlLeft.Size = new Size(235, 645);
             pnlLeft.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(61, 63, 105);
+            panel2.Location = new Point(12, 184);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(207, 2);
+            panel2.TabIndex = 5;
             // 
             // pictureBox1
             // 
@@ -79,13 +89,14 @@
             // lblUsername
             // 
             lblUsername.AutoSize = true;
-            lblUsername.Font = new Font("Arial Black", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblUsername.FlatStyle = FlatStyle.Flat;
+            lblUsername.Font = new Font("Arial Black", 14F, FontStyle.Bold);
             lblUsername.ForeColor = Color.FromArgb(67, 63, 89);
-            lblUsername.Location = new Point(12, 120);
+            lblUsername.Location = new Point(31, 120);
             lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(192, 33);
+            lblUsername.Size = new Size(89, 54);
             lblUsername.TabIndex = 0;
-            lblUsername.Text = "fname, lname";
+            lblUsername.Text = "fname, \r\nlname";
             lblUsername.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnReturnBook
@@ -98,7 +109,7 @@
             btnReturnBook.IconColor = Color.FromArgb(67, 63, 89);
             btnReturnBook.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnReturnBook.ImageAlign = ContentAlignment.MiddleLeft;
-            btnReturnBook.Location = new Point(12, 223);
+            btnReturnBook.Location = new Point(12, 244);
             btnReturnBook.Name = "btnReturnBook";
             btnReturnBook.Size = new Size(220, 54);
             btnReturnBook.TabIndex = 2;
@@ -116,7 +127,7 @@
             btnViewBook.IconColor = Color.FromArgb(67, 63, 89);
             btnViewBook.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnViewBook.ImageAlign = ContentAlignment.MiddleLeft;
-            btnViewBook.Location = new Point(12, 169);
+            btnViewBook.Location = new Point(12, 190);
             btnViewBook.Name = "btnViewBook";
             btnViewBook.Size = new Size(220, 54);
             btnViewBook.TabIndex = 1;
@@ -204,5 +215,6 @@
         private Panel panel1;
         private PictureBox pictureBox1;
         private Panel pnlMain;
+        private Panel panel2;
     }
 }
