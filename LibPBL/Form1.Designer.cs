@@ -48,6 +48,7 @@
             radEmp = new RadioButton();
             pnlLogin = new Panel();
             picLogoPP = new PictureBox();
+            radAdmin = new RadioButton();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picbxLoginBG).BeginInit();
             pnlLogin.SuspendLayout();
@@ -204,7 +205,7 @@
             btnLogin.FlatStyle = FlatStyle.Flat;
             btnLogin.Font = new Font("Arial Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = Color.FromArgb(255, 255, 192);
-            btnLogin.Location = new Point(118, 450);
+            btnLogin.Location = new Point(118, 492);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(117, 40);
             btnLogin.TabIndex = 28;
@@ -259,6 +260,7 @@
             // pnlLogin
             // 
             pnlLogin.BackColor = Color.FromArgb(216, 235, 254);
+            pnlLogin.Controls.Add(radAdmin);
             pnlLogin.Controls.Add(pnlTopLog);
             pnlLogin.Controls.Add(picLogoPP);
             pnlLogin.Controls.Add(btnRemoveSign);
@@ -288,6 +290,21 @@
             picLogoPP.SizeMode = PictureBoxSizeMode.Zoom;
             picLogoPP.TabIndex = 32;
             picLogoPP.TabStop = false;
+            // 
+            // radAdmin
+            // 
+            radAdmin.AutoSize = true;
+            radAdmin.BackColor = Color.Transparent;
+            radAdmin.FlatStyle = FlatStyle.Flat;
+            radAdmin.Font = new Font("Arial Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            radAdmin.ForeColor = Color.Gainsboro;
+            radAdmin.Location = new Point(118, 440);
+            radAdmin.Name = "radAdmin";
+            radAdmin.Size = new Size(109, 31);
+            radAdmin.TabIndex = 33;
+            radAdmin.TabStop = true;
+            radAdmin.Text = "Librarin";
+            radAdmin.UseVisualStyleBackColor = false;
             // 
             // formLogin
             // 
@@ -334,5 +351,6 @@
         private Panel pnlLogin;
         private Button button1;
         private PictureBox picLogoPP;
+        private RadioButton radAdmin;
     }
 }

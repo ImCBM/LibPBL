@@ -57,7 +57,7 @@ namespace LibPBL
             stopwatch.Start();
             try
             {
-                using (SQLiteConnection connection = new SQLiteConnection("Data Source=PBL.db;Version=3;"))
+                using (SQLiteConnection connection = new SQLiteConnection(@"Data Source=C:\Material\dbs\PBL.db;Version=3;"))
                 {
                     connection.Open();
 
@@ -103,9 +103,11 @@ namespace LibPBL
                             {
                                 Name = $"lblTitleInHolder{bookID}",
                                 Text = bookTitle,
+                                Size = new Size(289, 27),
+                                MaximumSize = new Size(289, 54),
                                 Location = new Point(240, 15),
                                 ForeColor = Color.Black,
-                                Font = new Font("Arial Black", 14f, FontStyle.Bold),
+                                Font = new Font("Ebrima", 14f, FontStyle.Bold),
                                 AutoSize = true
                             };
 
@@ -219,7 +221,7 @@ namespace LibPBL
             string query = $"SELECT * FROM Books WHERE LOWER(BookTitle) LIKE '%{searchTerm}%' OR LOWER(BookAuthor) LIKE '%{searchTerm}%' OR LOWER(BookCategory) LIKE '%{searchTerm}%' OR LOWER(BookPublisher) LIKE '%{searchTerm}%' OR LOWER(BookISBN) LIKE '%{searchTerm}%' OR LOWER(BookCopyright) LIKE '%{searchTerm}%'";
 
             // Use your SQLiteConnection and SQLiteCommand to execute the query and fetch results
-            using (SQLiteConnection connection = new SQLiteConnection("Data Source=PBL.db;Version=3;"))
+            using (SQLiteConnection connection = new SQLiteConnection(@"Data Source=C:\Material\dbs\PBL.db;Version=3;"))
             {
                 connection.Open();
 

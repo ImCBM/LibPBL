@@ -30,8 +30,9 @@
         {
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel1 = new Panel();
-            picFbook1 = new PictureBox();
             label1 = new Label();
+            picFbook1 = new PictureBox();
+            richTextBox1 = new RichTextBox();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picFbook1).BeginInit();
@@ -49,13 +50,24 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.LightGray;
+            panel1.BackColor = Color.WhiteSmoke;
+            panel1.Controls.Add(richTextBox1);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(picFbook1);
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(450, 220);
+            panel1.Size = new Size(517, 220);
             panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Arial Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(217, 135);
+            label1.Name = "label1";
+            label1.Size = new Size(76, 27);
+            label1.TabIndex = 1;
+            label1.Text = "label1";
             // 
             // picFbook1
             // 
@@ -65,15 +77,18 @@
             picFbook1.TabIndex = 0;
             picFbook1.TabStop = false;
             // 
-            // label1
+            // richTextBox1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Arial Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(220, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(76, 27);
-            label1.TabIndex = 1;
-            label1.Text = "label1";
+            richTextBox1.BackColor = Color.WhiteSmoke;
+            richTextBox1.BorderStyle = BorderStyle.None;
+            richTextBox1.Font = new Font("Arial Black", 14.25F, FontStyle.Bold);
+            richTextBox1.Location = new Point(198, 9);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.RightToLeft = RightToLeft.No;
+            richTextBox1.ScrollBars = RichTextBoxScrollBars.None;
+            richTextBox1.Size = new Size(316, 83);
+            richTextBox1.TabIndex = 2;
+            richTextBox1.Text = "Data Structures and Algorithm Analysis in C++";
             // 
             // ViewBookFiction
             // 
@@ -101,5 +116,6 @@
         private PictureBox picFbook1;
         private Label label1;
         private Panel pnlFbook8;
+        private RichTextBox richTextBox1;
     }
 }

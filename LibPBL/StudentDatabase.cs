@@ -12,7 +12,7 @@ namespace LibPBL
     internal class StudentDatabase
     {
         // Get the current application's base directory (where the .cs files are located)
-        public static readonly string DatabasePath = "Data Source=PBL.db;Version=3;";
+        public static readonly string DatabasePath = @"Data Source=C:\Material\dbs\PBL.db;Version=3;";
 
         // Combine the base directory with the file name to get the full path to the CSV file
         public static void SaveStudentData(string studentID, string firstName, string lastName, string gradeLevel, string section, string password)

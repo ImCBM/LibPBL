@@ -31,10 +31,10 @@
             txtSearchBar = new TextBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel1 = new Panel();
+            richTextBox1 = new RichTextBox();
+            pictureBox1 = new PictureBox();
             lblProcessTIme = new Label();
             lblMemUsage = new Label();
-            pictureBox1 = new PictureBox();
-            label1 = new Label();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -61,18 +61,42 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(label1);
+            panel1.BackColor = Color.WhiteSmoke;
+            panel1.Controls.Add(richTextBox1);
             panel1.Controls.Add(pictureBox1);
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
             panel1.Size = new Size(486, 277);
             panel1.TabIndex = 0;
             // 
+            // richTextBox1
+            // 
+            richTextBox1.BackColor = Color.WhiteSmoke;
+            richTextBox1.BorderStyle = BorderStyle.None;
+            richTextBox1.DetectUrls = false;
+            richTextBox1.Font = new Font("Ebrima", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            richTextBox1.Location = new Point(194, 4);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.ReadOnly = true;
+            richTextBox1.ScrollBars = RichTextBoxScrollBars.None;
+            richTextBox1.Size = new Size(289, 50);
+            richTextBox1.TabIndex = 2;
+            richTextBox1.TabStop = false;
+            richTextBox1.Text = "Test\nText";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(6, 4);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(182, 270);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
             // lblProcessTIme
             // 
             lblProcessTIme.AutoSize = true;
             lblProcessTIme.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblProcessTIme.Location = new Point(849, 44);
+            lblProcessTIme.Location = new Point(720, 39);
             lblProcessTIme.Name = "lblProcessTIme";
             lblProcessTIme.Size = new Size(118, 17);
             lblProcessTIme.TabIndex = 4;
@@ -83,29 +107,11 @@
             // 
             lblMemUsage.AutoSize = true;
             lblMemUsage.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            lblMemUsage.Location = new Point(849, 61);
+            lblMemUsage.Location = new Point(720, 61);
             lblMemUsage.Name = "lblMemUsage";
             lblMemUsage.Size = new Size(152, 17);
             lblMemUsage.TabIndex = 5;
             lblMemUsage.Text = "Current Memory Usage: ";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(6, 4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(182, 270);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft YaHei UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(263, 26);
-            label1.Name = "label1";
-            label1.Size = new Size(71, 26);
-            label1.TabIndex = 1;
-            label1.Text = "label1";
             // 
             // ViewBook
             // 
@@ -121,7 +127,6 @@
             Text = "ViewBook";
             flowLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -133,7 +138,7 @@
         private Label lblProcessTIme;
         private Label lblMemUsage;
         private Panel panel1;
-        private Label label1;
         private PictureBox pictureBox1;
+        private RichTextBox richTextBox1;
     }
 }
