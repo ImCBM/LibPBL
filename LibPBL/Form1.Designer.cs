@@ -36,7 +36,6 @@
             btnToSign = new FontAwesome.Sharp.IconButton();
             panel1 = new Panel();
             picbxLoginBG = new PictureBox();
-            pnlTopLog = new Panel();
             panel3 = new Panel();
             lblLoginID = new Label();
             txtLogID = new TextBox();
@@ -47,8 +46,8 @@
             radStud = new RadioButton();
             radEmp = new RadioButton();
             pnlLogin = new Panel();
-            picLogoPP = new PictureBox();
             radAdmin = new RadioButton();
+            picLogoPP = new PictureBox();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picbxLoginBG).BeginInit();
             pnlLogin.SuspendLayout();
@@ -58,10 +57,12 @@
             // pnlSignUp
             // 
             pnlSignUp.BackColor = SystemColors.ActiveCaption;
-            pnlSignUp.Location = new Point(393, 31);
+            pnlSignUp.Location = new Point(449, 41);
+            pnlSignUp.Margin = new Padding(3, 4, 3, 4);
             pnlSignUp.Name = "pnlSignUp";
-            pnlSignUp.Size = new Size(551, 650);
+            pnlSignUp.Size = new Size(630, 867);
             pnlSignUp.TabIndex = 1;
+            pnlSignUp.Paint += pnlSignUp_Paint;
             // 
             // btnRemoveSign
             // 
@@ -71,9 +72,10 @@
             btnRemoveSign.IconColor = Color.Black;
             btnRemoveSign.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnRemoveSign.IconSize = 28;
-            btnRemoveSign.Location = new Point(878, 2);
+            btnRemoveSign.Location = new Point(1003, 3);
+            btnRemoveSign.Margin = new Padding(3, 4, 3, 4);
             btnRemoveSign.Name = "btnRemoveSign";
-            btnRemoveSign.Size = new Size(54, 28);
+            btnRemoveSign.Size = new Size(62, 37);
             btnRemoveSign.TabIndex = 0;
             btnRemoveSign.UseVisualStyleBackColor = true;
             btnRemoveSign.Click += btnRemoveSign_Click;
@@ -83,19 +85,20 @@
             panel2.BackColor = Color.FromArgb(15, 33, 103);
             panel2.Controls.Add(lblToSign);
             panel2.Controls.Add(btnToSign);
-            panel2.Location = new Point(0, 549);
+            panel2.Location = new Point(0, 732);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(384, 132);
+            panel2.Size = new Size(439, 176);
             panel2.TabIndex = 2;
             // 
             // lblToSign
             // 
             lblToSign.AutoSize = true;
-            lblToSign.Font = new Font("Arial", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblToSign.Font = new Font("Franklin Gothic Medium", 13.8F, FontStyle.Italic, GraphicsUnit.Point, 0);
             lblToSign.ForeColor = Color.FromArgb(255, 236, 214);
-            lblToSign.Location = new Point(72, 29);
+            lblToSign.Location = new Point(77, 40);
             lblToSign.Name = "lblToSign";
-            lblToSign.Size = new Size(228, 23);
+            lblToSign.Size = new Size(240, 29);
             lblToSign.TabIndex = 1;
             lblToSign.Text = "Don't have an account?";
             lblToSign.TextAlign = ContentAlignment.MiddleCenter;
@@ -105,96 +108,92 @@
             btnToSign.BackColor = Color.FromArgb(76, 185, 231);
             btnToSign.FlatAppearance.BorderSize = 0;
             btnToSign.FlatStyle = FlatStyle.Flat;
-            btnToSign.Font = new Font("Arial Black", 14F, FontStyle.Bold);
+            btnToSign.Font = new Font("Franklin Gothic Book", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnToSign.ForeColor = Color.White;
             btnToSign.IconChar = FontAwesome.Sharp.IconChar.UserPlus;
             btnToSign.IconColor = Color.MidnightBlue;
             btnToSign.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnToSign.IconSize = 40;
             btnToSign.ImageAlign = ContentAlignment.MiddleRight;
-            btnToSign.Location = new Point(72, 55);
+            btnToSign.Location = new Point(69, 73);
+            btnToSign.Margin = new Padding(3, 4, 3, 4);
             btnToSign.Name = "btnToSign";
-            btnToSign.Size = new Size(225, 37);
+            btnToSign.Size = new Size(257, 49);
             btnToSign.TabIndex = 0;
             btnToSign.Text = "Create Account    ";
-            btnToSign.TextAlign = ContentAlignment.MiddleLeft;
             btnToSign.UseVisualStyleBackColor = false;
             btnToSign.Click += btnToSign_Click;
             // 
             // panel1
             // 
-            panel1.Location = new Point(0, 549);
+            panel1.Location = new Point(0, 732);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(380, 132);
+            panel1.Size = new Size(434, 176);
             panel1.TabIndex = 1;
             // 
             // picbxLoginBG
             // 
             picbxLoginBG.Image = Properties.Resources.NatLib1;
-            picbxLoginBG.Location = new Point(0, 0);
+            picbxLoginBG.Location = new Point(12, 13);
+            picbxLoginBG.Margin = new Padding(3, 4, 3, 4);
             picbxLoginBG.Name = "picbxLoginBG";
-            picbxLoginBG.Size = new Size(384, 553);
+            picbxLoginBG.Size = new Size(420, 711);
             picbxLoginBG.SizeMode = PictureBoxSizeMode.StretchImage;
             picbxLoginBG.TabIndex = 2;
             picbxLoginBG.TabStop = false;
             // 
-            // pnlTopLog
-            // 
-            pnlTopLog.BackColor = Color.White;
-            pnlTopLog.Location = new Point(0, 93);
-            pnlTopLog.Name = "pnlTopLog";
-            pnlTopLog.Size = new Size(380, 25);
-            pnlTopLog.TabIndex = 3;
-            // 
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(43, 40, 68);
-            panel3.Location = new Point(383, -7);
+            panel3.Location = new Point(438, -9);
+            panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(10, 720);
+            panel3.Size = new Size(11, 960);
             panel3.TabIndex = 0;
             // 
             // lblLoginID
             // 
             lblLoginID.AutoSize = true;
             lblLoginID.BackColor = Color.Transparent;
-            lblLoginID.Font = new Font("Arial Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLoginID.ForeColor = Color.WhiteSmoke;
-            lblLoginID.Location = new Point(130, 194);
+            lblLoginID.Font = new Font("Franklin Gothic Medium Cond", 16.2F);
+            lblLoginID.ForeColor = Color.White;
+            lblLoginID.Location = new Point(155, 232);
             lblLoginID.Name = "lblLoginID";
-            lblLoginID.Size = new Size(105, 30);
+            lblLoginID.Size = new Size(97, 36);
             lblLoginID.TabIndex = 24;
             lblLoginID.Text = "Enter ID";
             // 
             // txtLogID
             // 
             txtLogID.BackColor = SystemColors.InactiveCaption;
-            txtLogID.BorderStyle = BorderStyle.None;
-            txtLogID.Font = new Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtLogID.Location = new Point(27, 227);
+            txtLogID.Font = new Font("Franklin Gothic Medium Cond", 16.2F);
+            txtLogID.Location = new Point(31, 285);
+            txtLogID.Margin = new Padding(3, 4, 3, 4);
             txtLogID.Name = "txtLogID";
-            txtLogID.Size = new Size(299, 25);
+            txtLogID.Size = new Size(342, 38);
             txtLogID.TabIndex = 25;
             // 
             // lblLoginPass
             // 
             lblLoginPass.AutoSize = true;
             lblLoginPass.BackColor = Color.Transparent;
-            lblLoginPass.Font = new Font("Arial Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLoginPass.ForeColor = Color.WhiteSmoke;
-            lblLoginPass.Location = new Point(80, 271);
+            lblLoginPass.Font = new Font("Franklin Gothic Medium Cond", 16.2F);
+            lblLoginPass.ForeColor = Color.White;
+            lblLoginPass.Location = new Point(116, 335);
             lblLoginPass.Name = "lblLoginPass";
-            lblLoginPass.Size = new Size(193, 30);
+            lblLoginPass.Size = new Size(173, 36);
             lblLoginPass.TabIndex = 26;
             lblLoginPass.Text = "Enter Password";
             // 
             // txtLogPass
             // 
             txtLogPass.BackColor = SystemColors.InactiveCaption;
-            txtLogPass.Font = new Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtLogPass.Location = new Point(27, 304);
+            txtLogPass.Font = new Font("Franklin Gothic Medium Cond", 16.2F);
+            txtLogPass.Location = new Point(32, 387);
+            txtLogPass.Margin = new Padding(3, 4, 3, 4);
             txtLogPass.Name = "txtLogPass";
-            txtLogPass.Size = new Size(299, 32);
+            txtLogPass.Size = new Size(341, 38);
             txtLogPass.TabIndex = 27;
             // 
             // btnLogin
@@ -203,13 +202,14 @@
             btnLogin.FlatAppearance.BorderColor = Color.FromArgb(255, 255, 192);
             btnLogin.FlatAppearance.BorderSize = 0;
             btnLogin.FlatStyle = FlatStyle.Flat;
-            btnLogin.Font = new Font("Arial Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLogin.ForeColor = Color.FromArgb(255, 255, 192);
-            btnLogin.Location = new Point(118, 492);
+            btnLogin.Font = new Font("Franklin Gothic Book", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogin.ForeColor = Color.White;
+            btnLogin.Location = new Point(135, 656);
+            btnLogin.Margin = new Padding(3, 4, 3, 4);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(117, 40);
+            btnLogin.Size = new Size(134, 53);
             btnLogin.TabIndex = 28;
-            btnLogin.Text = "Login";
+            btnLogin.Text = "LOG IN";
             btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
             btnLogin.MouseLeave += btnLogin_MouseLeave;
@@ -219,11 +219,11 @@
             // 
             lblLoginAs.AutoSize = true;
             lblLoginAs.BackColor = Color.Transparent;
-            lblLoginAs.Font = new Font("Arial Black", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLoginAs.ForeColor = Color.WhiteSmoke;
-            lblLoginAs.Location = new Point(101, 356);
+            lblLoginAs.Font = new Font("Franklin Gothic Medium Cond", 16.2F);
+            lblLoginAs.ForeColor = Color.White;
+            lblLoginAs.Location = new Point(153, 457);
             lblLoginAs.Name = "lblLoginAs";
-            lblLoginAs.Size = new Size(151, 41);
+            lblLoginAs.Size = new Size(99, 36);
             lblLoginAs.TabIndex = 29;
             lblLoginAs.Text = "Login as";
             // 
@@ -231,11 +231,12 @@
             // 
             radStud.AutoSize = true;
             radStud.BackColor = Color.Transparent;
-            radStud.Font = new Font("Arial Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            radStud.Font = new Font("Franklin Gothic Medium Cond", 16.2F);
             radStud.ForeColor = Color.Gainsboro;
-            radStud.Location = new Point(64, 400);
+            radStud.Location = new Point(81, 515);
+            radStud.Margin = new Padding(3, 4, 3, 4);
             radStud.Name = "radStud";
-            radStud.Size = new Size(112, 31);
+            radStud.Size = new Size(117, 40);
             radStud.TabIndex = 30;
             radStud.TabStop = true;
             radStud.Text = "Student";
@@ -246,11 +247,12 @@
             // 
             radEmp.AutoSize = true;
             radEmp.BackColor = Color.Transparent;
-            radEmp.Font = new Font("Arial Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            radEmp.Font = new Font("Franklin Gothic Medium Cond", 16.2F);
             radEmp.ForeColor = Color.Gainsboro;
-            radEmp.Location = new Point(181, 400);
+            radEmp.Location = new Point(222, 515);
+            radEmp.Margin = new Padding(3, 4, 3, 4);
             radEmp.Name = "radEmp";
-            radEmp.Size = new Size(116, 31);
+            radEmp.Size = new Size(116, 40);
             radEmp.TabIndex = 31;
             radEmp.TabStop = true;
             radEmp.Text = "Teacher";
@@ -261,7 +263,6 @@
             // 
             pnlLogin.BackColor = Color.FromArgb(216, 235, 254);
             pnlLogin.Controls.Add(radAdmin);
-            pnlLogin.Controls.Add(pnlTopLog);
             pnlLogin.Controls.Add(picLogoPP);
             pnlLogin.Controls.Add(btnRemoveSign);
             pnlLogin.Controls.Add(radEmp);
@@ -277,47 +278,50 @@
             pnlLogin.Controls.Add(panel1);
             pnlLogin.Dock = DockStyle.Fill;
             pnlLogin.Location = new Point(0, 0);
+            pnlLogin.Margin = new Padding(3, 4, 3, 4);
             pnlLogin.Name = "pnlLogin";
-            pnlLogin.Size = new Size(944, 681);
+            pnlLogin.Size = new Size(1077, 897);
             pnlLogin.TabIndex = 0;
-            // 
-            // picLogoPP
-            // 
-            picLogoPP.Image = Properties.Resources.PAGEPAL;
-            picLogoPP.Location = new Point(80, -4);
-            picLogoPP.Name = "picLogoPP";
-            picLogoPP.Size = new Size(227, 122);
-            picLogoPP.SizeMode = PictureBoxSizeMode.Zoom;
-            picLogoPP.TabIndex = 32;
-            picLogoPP.TabStop = false;
             // 
             // radAdmin
             // 
             radAdmin.AutoSize = true;
             radAdmin.BackColor = Color.Transparent;
-            radAdmin.FlatStyle = FlatStyle.Flat;
-            radAdmin.Font = new Font("Arial Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            radAdmin.Font = new Font("Franklin Gothic Medium Cond", 16.2F);
             radAdmin.ForeColor = Color.Gainsboro;
-            radAdmin.Location = new Point(118, 440);
+            radAdmin.Location = new Point(146, 569);
+            radAdmin.Margin = new Padding(3, 4, 3, 4);
             radAdmin.Name = "radAdmin";
-            radAdmin.Size = new Size(109, 31);
+            radAdmin.Size = new Size(127, 40);
             radAdmin.TabIndex = 33;
             radAdmin.TabStop = true;
-            radAdmin.Text = "Librarin";
+            radAdmin.Text = "Librarian";
             radAdmin.UseVisualStyleBackColor = false;
+            // 
+            // picLogoPP
+            // 
+            picLogoPP.Image = Properties.Resources.PAGEPAL;
+            picLogoPP.Location = new Point(77, 55);
+            picLogoPP.Margin = new Padding(3, 4, 3, 4);
+            picLogoPP.Name = "picLogoPP";
+            picLogoPP.Size = new Size(259, 163);
+            picLogoPP.SizeMode = PictureBoxSizeMode.Zoom;
+            picLogoPP.TabIndex = 32;
+            picLogoPP.TabStop = false;
             // 
             // formLogin
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(944, 681);
+            ClientSize = new Size(1077, 897);
             Controls.Add(panel2);
             Controls.Add(pnlSignUp);
             Controls.Add(pnlLogin);
             ForeColor = Color.Coral;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MaximumSize = new Size(960, 720);
+            Margin = new Padding(3, 4, 3, 4);
+            MaximumSize = new Size(1095, 944);
             Name = "formLogin";
             Text = "Login";
             Load += formLogin_Load;
@@ -338,7 +342,6 @@
         private FontAwesome.Sharp.IconButton btnRemoveSign;
         private Panel panel1;
         private PictureBox picbxLoginBG;
-        private Panel pnlTopLog;
         private Panel panel3;
         private Label lblLoginID;
         private TextBox txtLogID;

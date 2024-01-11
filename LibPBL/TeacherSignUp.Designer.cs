@@ -44,122 +44,128 @@
             // cbxLevDept
             // 
             cbxLevDept.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbxLevDept.Font = new Font("Arial", 15.75F, FontStyle.Bold);
+            cbxLevDept.Font = new Font("Franklin Gothic Medium Cond", 13.8F);
             cbxLevDept.FormattingEnabled = true;
             cbxLevDept.Items.AddRange(new object[] { "Department of Data Science", "Department of Computer Science", "Department of Information Technology", "Department of Arts", "Department of Nursing", "Department of Communication", "Department of Accounting" });
-            cbxLevDept.Location = new Point(69, 270);
+            cbxLevDept.Location = new Point(135, 360);
+            cbxLevDept.Margin = new Padding(3, 4, 3, 4);
             cbxLevDept.Name = "cbxLevDept";
-            cbxLevDept.Size = new Size(386, 32);
+            cbxLevDept.Size = new Size(341, 37);
             cbxLevDept.TabIndex = 14;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Arial Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Franklin Gothic Medium Cond", 13.8F);
             label1.ForeColor = Color.FromArgb(0, 53, 107);
-            label1.Location = new Point(113, 237);
+            label1.Location = new Point(135, 328);
             label1.Name = "label1";
-            label1.Size = new Size(216, 30);
+            label1.Size = new Size(166, 29);
             label1.TabIndex = 13;
-            label1.Text = "Enter Department";
+            label1.Text = "Enter Department:";
             // 
             // txtSignID
             // 
-            txtSignID.Font = new Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtSignID.Location = new Point(113, 202);
+            txtSignID.Font = new Font("Franklin Gothic Medium Cond", 13.8F);
+            txtSignID.Location = new Point(135, 269);
+            txtSignID.Margin = new Padding(3, 4, 3, 4);
             txtSignID.Name = "txtSignID";
-            txtSignID.Size = new Size(299, 32);
+            txtSignID.Size = new Size(341, 34);
             txtSignID.TabIndex = 12;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Arial Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Franklin Gothic Medium Cond", 13.8F);
             label2.ForeColor = Color.FromArgb(0, 53, 107);
-            label2.Location = new Point(113, 169);
+            label2.Location = new Point(135, 237);
             label2.Name = "label2";
-            label2.Size = new Size(224, 30);
+            label2.Size = new Size(170, 29);
             label2.TabIndex = 11;
-            label2.Text = "Enter Employee ID";
+            label2.Text = "Enter Employee ID:";
             // 
             // btnSignEmpAccount
             // 
             btnSignEmpAccount.BackColor = Color.FromArgb(0, 53, 107);
             btnSignEmpAccount.FlatAppearance.BorderSize = 0;
             btnSignEmpAccount.FlatStyle = FlatStyle.Flat;
-            btnSignEmpAccount.Font = new Font("Arial Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSignEmpAccount.ForeColor = Color.FromArgb(255, 255, 192);
-            btnSignEmpAccount.Location = new Point(201, 398);
+            btnSignEmpAccount.Font = new Font("Franklin Gothic Book", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSignEmpAccount.ForeColor = Color.White;
+            btnSignEmpAccount.Location = new Point(230, 531);
+            btnSignEmpAccount.Margin = new Padding(3, 4, 3, 4);
             btnSignEmpAccount.Name = "btnSignEmpAccount";
-            btnSignEmpAccount.Size = new Size(117, 40);
+            btnSignEmpAccount.Size = new Size(150, 50);
             btnSignEmpAccount.TabIndex = 15;
-            btnSignEmpAccount.Text = "Sign Up";
+            btnSignEmpAccount.Text = "SIGN UP";
             btnSignEmpAccount.UseVisualStyleBackColor = false;
             btnSignEmpAccount.Click += btnSignEmpAccount_Click;
             // 
             // txtSignLname
             // 
-            txtSignLname.Font = new Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtSignLname.Location = new Point(113, 134);
+            txtSignLname.Font = new Font("Franklin Gothic Medium Cond", 13.8F);
+            txtSignLname.Location = new Point(135, 179);
+            txtSignLname.Margin = new Padding(3, 4, 3, 4);
             txtSignLname.Name = "txtSignLname";
-            txtSignLname.Size = new Size(299, 32);
+            txtSignLname.Size = new Size(341, 34);
             txtSignLname.TabIndex = 19;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Arial Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Franklin Gothic Medium Cond", 13.8F);
             label4.ForeColor = Color.FromArgb(0, 53, 107);
-            label4.Location = new Point(113, 101);
+            label4.Location = new Point(135, 147);
             label4.Name = "label4";
-            label4.Size = new Size(205, 30);
+            label4.Size = new Size(155, 29);
             label4.TabIndex = 18;
-            label4.Text = "Enter Last Name";
+            label4.Text = "Enter Last Name:";
             // 
             // txtSignFname
             // 
-            txtSignFname.Font = new Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtSignFname.Location = new Point(113, 66);
+            txtSignFname.Font = new Font("Franklin Gothic Medium Cond", 13.8F);
+            txtSignFname.Location = new Point(135, 88);
+            txtSignFname.Margin = new Padding(3, 4, 3, 4);
             txtSignFname.Name = "txtSignFname";
-            txtSignFname.Size = new Size(299, 32);
+            txtSignFname.Size = new Size(341, 34);
             txtSignFname.TabIndex = 17;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Arial Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Franklin Gothic Medium Cond", 13.8F);
             label5.ForeColor = Color.FromArgb(0, 53, 107);
-            label5.Location = new Point(113, 33);
+            label5.Location = new Point(135, 56);
             label5.Name = "label5";
-            label5.Size = new Size(208, 30);
+            label5.Size = new Size(156, 29);
             label5.TabIndex = 16;
-            label5.Text = "Enter First Name";
+            label5.Text = "Enter First Name:";
             // 
             // txtSignPass
             // 
-            txtSignPass.Font = new Font("Arial", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtSignPass.Location = new Point(113, 349);
+            txtSignPass.Font = new Font("Franklin Gothic Medium Cond", 13.8F);
+            txtSignPass.Location = new Point(135, 448);
+            txtSignPass.Margin = new Padding(3, 4, 3, 4);
             txtSignPass.Name = "txtSignPass";
-            txtSignPass.Size = new Size(299, 32);
+            txtSignPass.Size = new Size(341, 34);
             txtSignPass.TabIndex = 21;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Arial Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Franklin Gothic Medium Cond", 13.8F);
             label3.ForeColor = Color.FromArgb(0, 53, 107);
-            label3.Location = new Point(113, 316);
+            label3.Location = new Point(135, 416);
             label3.Name = "label3";
-            label3.Size = new Size(193, 30);
+            label3.Size = new Size(147, 29);
             label3.TabIndex = 20;
-            label3.Text = "Enter Password";
+            label3.Text = "Enter Password:";
             // 
             // TeacherSignUp
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(216, 235, 254);
-            ClientSize = new Size(538, 642);
+            ClientSize = new Size(615, 856);
             Controls.Add(txtSignPass);
             Controls.Add(label3);
             Controls.Add(txtSignLname);
@@ -171,6 +177,7 @@
             Controls.Add(label1);
             Controls.Add(txtSignID);
             Controls.Add(label2);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "TeacherSignUp";
             Text = "TeacherSignUp";
             ResumeLayout(false);

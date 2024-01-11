@@ -30,9 +30,9 @@
         {
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel1 = new Panel();
+            richTextBox1 = new RichTextBox();
             label1 = new Label();
             picFbook1 = new PictureBox();
-            richTextBox1 = new RichTextBox();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picFbook1).BeginInit();
@@ -43,9 +43,11 @@
             flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.Controls.Add(panel1);
             flowLayoutPanel1.Dock = DockStyle.Fill;
+            flowLayoutPanel1.Font = new Font("Franklin Gothic Medium Cond", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             flowLayoutPanel1.Location = new Point(0, 0);
+            flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(997, 437);
+            flowLayoutPanel1.Size = new Size(1139, 583);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -54,49 +56,54 @@
             panel1.Controls.Add(richTextBox1);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(picFbook1);
-            panel1.Location = new Point(3, 3);
+            panel1.Font = new Font("Franklin Gothic Medium Cond", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            panel1.Location = new Point(3, 4);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(517, 220);
+            panel1.Size = new Size(591, 293);
             panel1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Arial Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(217, 135);
-            label1.Name = "label1";
-            label1.Size = new Size(76, 27);
-            label1.TabIndex = 1;
-            label1.Text = "label1";
-            // 
-            // picFbook1
-            // 
-            picFbook1.Location = new Point(8, 3);
-            picFbook1.Name = "picFbook1";
-            picFbook1.Size = new Size(184, 214);
-            picFbook1.TabIndex = 0;
-            picFbook1.TabStop = false;
             // 
             // richTextBox1
             // 
             richTextBox1.BackColor = Color.WhiteSmoke;
             richTextBox1.BorderStyle = BorderStyle.None;
-            richTextBox1.Font = new Font("Arial Black", 14.25F, FontStyle.Bold);
-            richTextBox1.Location = new Point(198, 9);
+            richTextBox1.Font = new Font("Franklin Gothic Medium", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            richTextBox1.Location = new Point(226, 12);
+            richTextBox1.Margin = new Padding(3, 4, 3, 4);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.RightToLeft = RightToLeft.No;
             richTextBox1.ScrollBars = RichTextBoxScrollBars.None;
-            richTextBox1.Size = new Size(316, 83);
+            richTextBox1.Size = new Size(361, 111);
             richTextBox1.TabIndex = 2;
             richTextBox1.Text = "Data Structures and Algorithm Analysis in C++";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Franklin Gothic Medium Cond", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(248, 180);
+            label1.Name = "label1";
+            label1.Size = new Size(67, 29);
+            label1.TabIndex = 1;
+            label1.Text = "label1";
+            // 
+            // picFbook1
+            // 
+            picFbook1.Location = new Point(9, 4);
+            picFbook1.Margin = new Padding(3, 4, 3, 4);
+            picFbook1.Name = "picFbook1";
+            picFbook1.Size = new Size(210, 285);
+            picFbook1.TabIndex = 0;
+            picFbook1.TabStop = false;
+            // 
             // ViewBookFiction
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(997, 437);
+            ClientSize = new Size(1139, 583);
             Controls.Add(flowLayoutPanel1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "ViewBookFiction";
             Text = "ViewBookFiction";
             flowLayoutPanel1.ResumeLayout(false);

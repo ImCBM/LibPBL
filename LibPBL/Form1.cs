@@ -89,8 +89,8 @@ namespace LibPBL
         private void btnToSign_Click(object sender, EventArgs e)
         {
             //this.Width = 960;
-            this.MaximumSize = new Size(960, 720);
-            this.MinimumSize = new Size(960, 720);
+            this.MaximumSize = new Size(960, 900);
+            this.MinimumSize = new Size(960, 800);
             do
             {
                 this.Width += 20;
@@ -203,6 +203,9 @@ namespace LibPBL
 
         }
 
+        private void pnlSignUp_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
     }
 }
