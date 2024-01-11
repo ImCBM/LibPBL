@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LibPBL
 {
-    public partial class ViewBookFiction : Form
+    public partial class ViewBookReturnReserve : Form
     {
-        public ViewBookFiction()
+        public ViewBookReturnReserve()
         {
             InitializeComponent();
         }

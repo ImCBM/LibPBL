@@ -1,6 +1,6 @@
 ﻿namespace LibPBL
 {
-    partial class ViewBookFiction
+    partial class ViewBookReturnReserve
     {
         /// <summary>
         /// Required designer variable.
