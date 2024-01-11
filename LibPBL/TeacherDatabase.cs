@@ -11,7 +11,8 @@ namespace LibPBL
     {
         //private static readonly string DatabaseFolderPath = AppDomain.CurrentDomain.BaseDirectory;
         //public static readonly string DatabasePath = Path.Combine(DatabaseFolderPath, "PBL.db");
-        public static readonly string DatabasePath = "Data Source=PBL.db;Version=3;";
+        public static readonly string DatabasePath = @"Data Source=C:\Material\dbs\PBL.db;Version=3;";
+
 
         public static void SaveTeacherData(string empID, string firstName, string lastName, string dept, string password)
         {
