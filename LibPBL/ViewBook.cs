@@ -82,7 +82,7 @@ namespace LibPBL
                             {
                                 Name = $"pnlBookHolder{bookID}",
                                 BackColor = Color.WhiteSmoke,
-                                Size = new Size(864, 277)
+                                Size = new Size(486, 277)
                             };
 
                             PictureBox picBox = new PictureBox
@@ -203,7 +203,9 @@ namespace LibPBL
 
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        
+
+        private void txtSearchBar_TextChanged(object sender, EventArgs e)
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -214,7 +216,7 @@ namespace LibPBL
             flowLayoutPanel1.Controls.Clear();
 
             // Execute a query to fetch filtered data from the database based on the search term
-            string query = $"SELECT * FROM Books WHERE LOWER(BookTitle) LIKE '%{searchTerm}%' OR LOWER(BookAuthor) LIKE '%{searchTerm}%' OR LOWER(BookCategory) LIKE '%{searchTerm}%' OR LOWER(BookPublisher) LIKE '%{searchTerm}%'";
+            string query = $"SELECT * FROM Books WHERE LOWER(BookTitle) LIKE '%{searchTerm}%' OR LOWER(BookAuthor) LIKE '%{searchTerm}%' OR LOWER(BookCategory) LIKE '%{searchTerm}%' OR LOWER(BookPublisher) LIKE '%{searchTerm}%' OR LOWER(BookISBN) LIKE '%{searchTerm}%' OR LOWER(BookCopyright) LIKE '%{searchTerm}%'";
 
             // Use your SQLiteConnection and SQLiteCommand to execute the query and fetch results
             using (SQLiteConnection connection = new SQLiteConnection("Data Source=PBL.db;Version=3;"))

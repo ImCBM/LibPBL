@@ -98,7 +98,15 @@ namespace LibPBL
                             {
                                 string firstName = reader["FirstName"].ToString();
                                 string lastName = reader["LastName"].ToString();
-                                return $"{firstName} {lastName}";
+                                string formattedName;
+                                
+                                if ( firstName.Length >= 8)
+                                {
+                                    formattedName = $"{firstName},\n {lastName}";
+                                    return formattedName;
+                                }
+                                return $"{firstName}, {lastName}";
+                                
                             }
                         }
                     }
