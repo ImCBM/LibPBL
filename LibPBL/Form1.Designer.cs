@@ -47,8 +47,8 @@
             radStud = new RadioButton();
             radEmp = new RadioButton();
             pnlLogin = new Panel();
-            picLogoPP = new PictureBox();
             radAdmin = new RadioButton();
+            picLogoPP = new PictureBox();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picbxLoginBG).BeginInit();
             pnlLogin.SuspendLayout();
@@ -281,6 +281,20 @@
             pnlLogin.Size = new Size(944, 681);
             pnlLogin.TabIndex = 0;
             // 
+            // radAdmin
+            // 
+            radAdmin.AutoSize = true;
+            radAdmin.BackColor = Color.Transparent;
+            radAdmin.Font = new Font("Arial Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            radAdmin.ForeColor = Color.Gainsboro;
+            radAdmin.Location = new Point(118, 437);
+            radAdmin.Name = "radAdmin";
+            radAdmin.Size = new Size(123, 31);
+            radAdmin.TabIndex = 34;
+            radAdmin.TabStop = true;
+            radAdmin.Text = "Librarian";
+            radAdmin.UseVisualStyleBackColor = false;
+            // 
             // picLogoPP
             // 
             picLogoPP.Image = Properties.Resources.PAGEPAL;
@@ -290,21 +304,6 @@
             picLogoPP.SizeMode = PictureBoxSizeMode.Zoom;
             picLogoPP.TabIndex = 32;
             picLogoPP.TabStop = false;
-            // 
-            // radAdmin
-            // 
-            radAdmin.AutoSize = true;
-            radAdmin.BackColor = Color.Transparent;
-            radAdmin.FlatStyle = FlatStyle.Flat;
-            radAdmin.Font = new Font("Arial Black", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            radAdmin.ForeColor = Color.Gainsboro;
-            radAdmin.Location = new Point(118, 440);
-            radAdmin.Name = "radAdmin";
-            radAdmin.Size = new Size(109, 31);
-            radAdmin.TabIndex = 33;
-            radAdmin.TabStop = true;
-            radAdmin.Text = "Librarin";
-            radAdmin.UseVisualStyleBackColor = false;
             // 
             // formLogin
             // 

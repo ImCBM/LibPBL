@@ -1,6 +1,6 @@
 ﻿namespace LibPBL
 {
-    partial class MainLibrary
+    partial class Librarian
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             pnlLeft = new Panel();
+            panel1 = new Panel();
+            btnPayment = new FontAwesome.Sharp.IconButton();
+            btnViewBorrowers = new FontAwesome.Sharp.IconButton();
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
-            panel1 = new Panel();
-            lblUsername = new Label();
+            lblUsernameAdmin = new Label();
             btnReturnBook = new FontAwesome.Sharp.IconButton();
             btnViewBook = new FontAwesome.Sharp.IconButton();
             pnlTopHeader = new Panel();
@@ -47,16 +49,65 @@
             // pnlLeft
             // 
             pnlLeft.BackColor = Color.FromArgb(234, 249, 245);
+            pnlLeft.Controls.Add(panel1);
+            pnlLeft.Controls.Add(btnPayment);
+            pnlLeft.Controls.Add(btnViewBorrowers);
             pnlLeft.Controls.Add(panel2);
             pnlLeft.Controls.Add(pictureBox1);
-            pnlLeft.Controls.Add(panel1);
-            pnlLeft.Controls.Add(lblUsername);
+            pnlLeft.Controls.Add(lblUsernameAdmin);
             pnlLeft.Controls.Add(btnReturnBook);
             pnlLeft.Controls.Add(btnViewBook);
             pnlLeft.Location = new Point(0, 36);
             pnlLeft.Name = "pnlLeft";
             pnlLeft.Size = new Size(235, 645);
-            pnlLeft.TabIndex = 0;
+            pnlLeft.TabIndex = 3;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(61, 63, 105);
+            panel1.Dock = DockStyle.Right;
+            panel1.Location = new Point(225, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(10, 645);
+            panel1.TabIndex = 3;
+            // 
+            // btnPayment
+            // 
+            btnPayment.FlatAppearance.BorderSize = 0;
+            btnPayment.FlatStyle = FlatStyle.Flat;
+            btnPayment.Font = new Font("Arial Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPayment.ForeColor = Color.FromArgb(67, 63, 89);
+            btnPayment.IconChar = FontAwesome.Sharp.IconChar.MoneyBillTransfer;
+            btnPayment.IconColor = Color.FromArgb(67, 63, 89);
+            btnPayment.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnPayment.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPayment.Location = new Point(12, 343);
+            btnPayment.Name = "btnPayment";
+            btnPayment.Size = new Size(220, 54);
+            btnPayment.TabIndex = 7;
+            btnPayment.Text = "Payment";
+            btnPayment.TextAlign = ContentAlignment.MiddleRight;
+            btnPayment.UseVisualStyleBackColor = true;
+            btnPayment.Click += btnPayment_Click;
+            // 
+            // btnViewBorrowers
+            // 
+            btnViewBorrowers.FlatAppearance.BorderSize = 0;
+            btnViewBorrowers.FlatStyle = FlatStyle.Flat;
+            btnViewBorrowers.Font = new Font("Arial Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnViewBorrowers.ForeColor = Color.FromArgb(67, 63, 89);
+            btnViewBorrowers.IconChar = FontAwesome.Sharp.IconChar.UserGroup;
+            btnViewBorrowers.IconColor = Color.FromArgb(67, 63, 89);
+            btnViewBorrowers.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnViewBorrowers.ImageAlign = ContentAlignment.MiddleLeft;
+            btnViewBorrowers.Location = new Point(12, 296);
+            btnViewBorrowers.Name = "btnViewBorrowers";
+            btnViewBorrowers.Size = new Size(220, 54);
+            btnViewBorrowers.TabIndex = 6;
+            btnViewBorrowers.Text = "Borrowers";
+            btnViewBorrowers.TextAlign = ContentAlignment.MiddleRight;
+            btnViewBorrowers.UseVisualStyleBackColor = true;
+            btnViewBorrowers.Click += btnViewBorrowers_Click;
             // 
             // panel2
             // 
@@ -77,27 +128,18 @@
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
-            // panel1
+            // lblUsernameAdmin
             // 
-            panel1.BackColor = Color.FromArgb(61, 63, 105);
-            panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(225, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(10, 645);
-            panel1.TabIndex = 3;
-            // 
-            // lblUsername
-            // 
-            lblUsername.AutoSize = true;
-            lblUsername.FlatStyle = FlatStyle.Flat;
-            lblUsername.Font = new Font("Arial Black", 14F, FontStyle.Bold);
-            lblUsername.ForeColor = Color.FromArgb(67, 63, 89);
-            lblUsername.Location = new Point(31, 120);
-            lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(89, 54);
-            lblUsername.TabIndex = 0;
-            lblUsername.Text = "fname, \r\nlname";
-            lblUsername.TextAlign = ContentAlignment.MiddleCenter;
+            lblUsernameAdmin.AutoSize = true;
+            lblUsernameAdmin.FlatStyle = FlatStyle.Flat;
+            lblUsernameAdmin.Font = new Font("Arial Black", 14F, FontStyle.Bold);
+            lblUsernameAdmin.ForeColor = Color.FromArgb(67, 63, 89);
+            lblUsernameAdmin.Location = new Point(56, 120);
+            lblUsernameAdmin.Name = "lblUsernameAdmin";
+            lblUsernameAdmin.Size = new Size(105, 54);
+            lblUsernameAdmin.TabIndex = 0;
+            lblUsernameAdmin.Text = "Admin\r\nLibrarian";
+            lblUsernameAdmin.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnReturnBook
             // 
@@ -116,7 +158,6 @@
             btnReturnBook.Text = "Return Books";
             btnReturnBook.TextAlign = ContentAlignment.MiddleRight;
             btnReturnBook.UseVisualStyleBackColor = true;
-            btnReturnBook.Click += btnReturnBook_Click;
             // 
             // btnViewBook
             // 
@@ -146,7 +187,7 @@
             pnlTopHeader.Location = new Point(0, 0);
             pnlTopHeader.Name = "pnlTopHeader";
             pnlTopHeader.Size = new Size(1264, 38);
-            pnlTopHeader.TabIndex = 1;
+            pnlTopHeader.TabIndex = 4;
             // 
             // btnMinimize
             // 
@@ -182,21 +223,19 @@
             pnlMain.Location = new Point(235, 36);
             pnlMain.Name = "pnlMain";
             pnlMain.Size = new Size(1029, 645);
-            pnlMain.TabIndex = 2;
+            pnlMain.TabIndex = 5;
             // 
-            // MainLibrary
+            // Librarian
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1264, 681);
+            Controls.Add(pnlLeft);
             Controls.Add(pnlTopHeader);
             Controls.Add(pnlMain);
-            Controls.Add(pnlLeft);
-            MaximumSize = new Size(1280, 720);
-            MinimumSize = new Size(1280, 720);
-            Name = "MainLibrary";
-            Text = "MainLibrary";
-            Load += MainLibrary_Load;
+            Name = "Librarian";
+            Text = "Librarian";
+            Load += Librarian_Load;
             pnlLeft.ResumeLayout(false);
             pnlLeft.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -207,15 +246,17 @@
         #endregion
 
         private Panel pnlLeft;
-        private Panel pnlTopHeader;
-        private FontAwesome.Sharp.IconButton btnViewBook;
-        private Label lblUsername;
-        private FontAwesome.Sharp.IconButton btnReturnBook;
-        private FontAwesome.Sharp.IconButton btnX;
-        private FontAwesome.Sharp.IconButton btnMinimize;
-        private Panel panel1;
-        private PictureBox pictureBox1;
-        private Panel pnlMain;
         private Panel panel2;
+        private PictureBox pictureBox1;
+        private Panel panel1;
+        private Label lblUsernameAdmin;
+        private FontAwesome.Sharp.IconButton btnReturnBook;
+        private FontAwesome.Sharp.IconButton btnViewBook;
+        private Panel pnlTopHeader;
+        private FontAwesome.Sharp.IconButton btnMinimize;
+        private FontAwesome.Sharp.IconButton btnX;
+        private Panel pnlMain;
+        private FontAwesome.Sharp.IconButton btnViewBorrowers;
+        private FontAwesome.Sharp.IconButton btnPayment;
     }
 }

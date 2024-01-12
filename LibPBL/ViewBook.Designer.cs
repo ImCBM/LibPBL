@@ -85,6 +85,7 @@
             Controls.Add(txtSearchBar);
             Name = "ViewBook";
             Text = "ViewBook";
+            Load += ViewBook_Load;
             ResumeLayout(false);
             PerformLayout();
         }

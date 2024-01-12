@@ -13,14 +13,17 @@ namespace LibPBL
 {
     public partial class MainLibrary : Form
     {
-        private string LogInID;
+        public static MainLibrary instance;
+        public string LogInID;
         private string LogInPass;
         string studentIDToRetrieve;
-        bool isLogInTypeStud;
+        public bool isLogInTypeStud;
+        public bool isLogInTypeAdmin = false;
 
         public MainLibrary(string passedID, string passedPass, bool isStudent)
         {
             InitializeComponent();
+            instance = this;
             LogInID = passedID;
             studentIDToRetrieve = passedID;
             LogInPass = passedPass;
@@ -37,12 +40,12 @@ namespace LibPBL
                 fullName = StudentDatabase.GetFullNameByStudentID(studentIDToRetrieve);
                 lblUsername.Text = fullName;
             }
-           else if (isLogInTypeStud == false)
+            else if (isLogInTypeStud == false)
             {
                 fullName = TeacherDatabase.GetFullNameByEmpID(studentIDToRetrieve);
                 lblUsername.Text = fullName;
             }
-            
+
 
 
         }
@@ -68,6 +71,11 @@ namespace LibPBL
         private void btnViewBook_Click(object sender, EventArgs e)
         {
             OpenChildMainForm(new ViewBook());
+        }
+
+        private void btnReturnBook_Click(object sender, EventArgs e)
+        {
+            OpenChildMainForm(new ViewReturnBooks());
         }
     }
 }

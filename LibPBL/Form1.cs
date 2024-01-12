@@ -6,6 +6,7 @@ namespace LibPBL
 {
     public partial class formLogin : Form
     {
+        
 
 
 
@@ -14,7 +15,7 @@ namespace LibPBL
         public formLogin()
         {
             InitializeComponent();
-
+            
 
         }
 
@@ -33,10 +34,14 @@ namespace LibPBL
             lblLoginAs.Parent = picbxLoginBG;
             lblLoginAs.BackColor = Color.Transparent;
 
+            
+
             radStud.Parent = picbxLoginBG;
             radStud.BackColor = Color.Transparent;
             radEmp.Parent = picbxLoginBG;
             radEmp.BackColor = Color.Transparent;
+            radAdmin.Parent = picbxLoginBG;
+            radAdmin.BackColor = Color.Transparent;
 
             //
             //string LogInID = "FirstN";
@@ -75,6 +80,20 @@ namespace LibPBL
             MainLibrary mainLibraryForm = new MainLibrary(passingID, passingPass, passingLogInType);
             mainLibraryForm.Show();
             mainLibraryForm.TopLevel = true;
+
+            // Close the current form
+
+        }
+
+        // Open Main Library
+        private void OpenLibrarianForm(string passingID, string passingPass, bool passingLogInType)
+        {
+
+
+            // Open the new form (MainLibrary) and pass necessary variables
+            Librarian Librarian = new Librarian(passingID, passingPass, passingLogInType);
+            Librarian.Show();
+            Librarian.TopLevel = true;
 
             // Close the current form
 
@@ -124,6 +143,12 @@ namespace LibPBL
         }
 
         private void radEmp_CheckedChanged(object sender, EventArgs e)
+        {
+            radStud.ForeColor = Color.Gainsboro;
+            radEmp.ForeColor = Color.Silver;
+        }
+
+        private void radAdmin_CheckedChanged(object sender, EventArgs e)
         {
             radStud.ForeColor = Color.Gainsboro;
             radEmp.ForeColor = Color.Silver;
@@ -182,6 +207,26 @@ namespace LibPBL
                 else
                 {
                     MessageBox.Show($"Invalid credentials. Please check entered Employee ID or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            else if (radAdmin.Checked == true)
+            {
+                string enteredID = txtLogID.Text;
+                string enteredPassword = txtLogPass.Text;
+                if (enteredID == "admin" || enteredPassword == "admin123")
+                {
+                    string LogInID = txtLogID.Text;
+                    string LogInPass = txtLogPass.Text;
+                    bool isLogInStud = false;
+                    MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    OpenLibrarianForm(LogInID, LogInPass, isLogInStud);
+                    this.Hide();
+                    
+                }
+                else
+                {
+                    MessageBox.Show($"Invalid credentials. Please check entered ID or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else

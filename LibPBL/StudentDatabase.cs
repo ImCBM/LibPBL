@@ -24,7 +24,7 @@ namespace LibPBL
                     connection.Open();
 
                     // Create the Students table if it doesn't exist
-                    using (SQLiteCommand createTableCommand = new SQLiteCommand("CREATE TABLE IF NOT EXISTS Students (StudentID TEXT PRIMARY KEY, FirstName TEXT, LastName TEXT, GradeLevel TEXT, Section TEXT, Password TEXT);", connection))
+                    using (SQLiteCommand createTableCommand = new SQLiteCommand("CREATE TABLE IF NOT EXISTS Students (StudentID TEXT PRIMARY KEY, FirstName TEXT, LastName TEXT, GradeLevel TEXT, Section TEXT, Password TEXT, AmountBorrowed INTEGER NOT NULL DEFAULT 0);", connection))
                     {
                         createTableCommand.ExecuteNonQuery();
                     }
@@ -37,7 +37,7 @@ namespace LibPBL
                     }
 
                     // Insert data into the Students table
-                    using (SQLiteCommand insertCommand = new SQLiteCommand("INSERT INTO Students (StudentID, FirstName, LastName, GradeLevel, Section, Password) VALUES (@StudentID, @FirstName, @LastName, @GradeLevel, @Section, @Password);", connection))
+                    using (SQLiteCommand insertCommand = new SQLiteCommand("INSERT INTO Students (StudentID, FirstName, LastName, GradeLevel, Section, Password, AmountBorrowed) VALUES (@StudentID, @FirstName, @LastName, @GradeLevel, @Section, @Password, 0);", connection))
                     {
                         insertCommand.Parameters.AddWithValue("@StudentID", studentID);
                         insertCommand.Parameters.AddWithValue("@FirstName", firstName);
@@ -95,7 +95,7 @@ namespace LibPBL
                 }
 
                 // If the student with the specified ID is not found
-                MessageBox.Show("Student not found in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Student not found in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return string.Empty;
             }
             catch (Exception ex)
@@ -104,5 +104,27 @@ namespace LibPBL
                 return string.Empty;
             }
         }
+
+        //BOOKERS
+        
+
+        private static bool StudentExists(SQLiteConnection connection, string studentID)
+        {
+            string query = "SELECT COUNT(*) FROM Students WHERE StudentID = @studentID;";
+            using (SQLiteCommand command = new SQLiteCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@studentID", studentID);
+                int count = Convert.ToInt32(command.ExecuteScalar());
+                return count > 0;
+            }
+        }
+
+
+        
+
+        
+
+        
+
     }
 }

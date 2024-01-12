@@ -16,10 +16,12 @@ namespace LibPBL
 {
     public partial class ViewBook : Form
     {
+        public static ViewBook instance;
         private System.Windows.Forms.Timer memoryUsageTimer;
         public ViewBook()
         {
             InitializeComponent();
+            instance = this;
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             // Inside your form where you want to use this method
@@ -34,7 +36,7 @@ namespace LibPBL
 
             // Start the timer
             memoryUsageTimer.Start();
-            
+
             lblProcessTIme.Text = "Data Retrieved in " + processTime.Milliseconds + " milliseconds.";
         }
         private void MemoryUsageTimer_Tick(object sender, EventArgs e)
@@ -57,7 +59,7 @@ namespace LibPBL
             // Output the memory usage
             lblMemUsage.Text = "Current Memory Usage: " + Math.Round(memoryUsageInMB) + "MB";
         }
-        
+
 
 
 
@@ -68,13 +70,18 @@ namespace LibPBL
 
         }
 
-        
 
-        private void txtSearchBar_TextChanged(object sender, EventArgs e) 
+
+        private void txtSearchBar_TextChanged(object sender, EventArgs e)
         {
             BookDatabase bookDatabase = new BookDatabase();
             // BookDatabase.SearchBooksToFlowLayoutPanel(flowLayoutPanel1, txtSearchBar.Text);
             bookDatabase.SearchBooksToFlowLayoutPanel(flowLayoutPanel1, txtSearchBar.Text);
+        }
+
+        private void ViewBook_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
